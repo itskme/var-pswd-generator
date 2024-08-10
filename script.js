@@ -79,3 +79,43 @@ let resultContainerBound = {
   left: resultContainer.getBoundingClientRect().left,
   top: resultContainer.getBoundingClientRect().top,
 };
+window.addEventListener("resize", (e) => {
+  resultContainerBound = {
+    left: resultContainer.getBoundingClientRect().left,
+    top: resultContainer.getBoundingClientRect().top,
+  };
+});
+
+
+resultContainer.addEventListener("click", () => {
+  const textarea = document.createElement("textarea");
+  const password = resultEl.innerText;
+  if (!password || password == "CLICK TO GENERATE BELOW") {
+    return;
+  }
+  textarea.value = password;
+  document.body.appendChild(textarea);
+  textarea.select();
+  document.execCommand("copy");
+  textarea.remove();
+
+  copyInfo.style.transform = "translateY(200%)";
+  copyInfo.style.opacity = "0";
+  copiedInfo.style.transform = "translateY(0%)";
+  copiedInfo.style.opacity = "0.75";
+});
+
+generateBtn.addEventListener("click", () => {
+  const length = +lengthEl.value;
+  const hasLower = lowercaseEl.checked;
+  const hasUpper = uppercaseEl.checked;
+  const hasNumber = numberEl.checked;
+  const hasSymbol = symbolEl.checked;
+  generatedPassword = true;
+  resultEl.innerText = generatePassword(length, hasLower, hasUpper, hasNumber, hasSymbol);
+  copyInfo.style.transform = "translateY(0%)";
+  copyInfo.style.opacity = "0.75";
+  copiedInfo.style.transform = "translateY(200%)";
+  copiedInfo.style.opacity = "0";
+});
+
