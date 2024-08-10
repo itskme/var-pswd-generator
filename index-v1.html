@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>variable-passwd-generator itskme</title>
+	<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<div class="container">
+	<h2 class="title">password generator</h2>
+
+	<div class="result">
+		<div class="result__title field-title">Generated Password</div>
+		<div class="result__info right">click to copy</div>
+		<div class="result__info left">copied</div>
+		<div class="result__viewbox" id="result">CLICK TO GENERATE BELOW</div>
+		<button id="copy-btn"></button>
+	</div>
+
+	<div class="length range__slider" data-min="4" data-max="32">
+		<div class="length__title field-title" data-length='0'>length:</div>
+		<input id="slider" type="range" min="4" max="32" value="16" />
+	</div>
+</body>
+</html>
